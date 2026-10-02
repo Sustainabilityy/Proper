@@ -2470,6 +2470,352 @@ body{background:#f3f6f4!important}
  .portal-module.aspect-launch-card::before,.portal-module.aspect-launch-card::after,
  .aspect-launch-card .dashboard-aspect-symbol::after,.portal-module:not(.aspect-launch-card)::before,.portal-module:not(.aspect-launch-card)::after{animation:none!important}
 }
+
+/* ---------- DASHBOARD QUICK ACTIONS ROW ---------- */
+.dashboard-quick-actions-bar{
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid #dce7e1;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 10px rgba(6,35,26,.04);
+}
+.quick-actions-bar-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.quick-actions-kicker{
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--brand-600);
+  text-transform: uppercase;
+}
+.quick-actions-subtitle{
+  font-size: 11px;
+  color: var(--muted);
+}
+.quick-actions-bar-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media(max-width: 900px){
+  .quick-actions-bar-grid{grid-template-columns: 1fr;}
+}
+.dash-quick-action-card{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  background: #fbfdfc;
+  border: 1px solid #dfe7e2;
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: all .18s ease;
+  cursor: pointer;
+  width: 100%;
+}
+.dash-quick-action-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--brand-500);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(6,35,26,.08);
+}
+.dash-quick-icon-wrap{
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+.dash-quick-icon-wrap svg{
+  width: 20px;
+  height: 20px;
+}
+.icon-report{background: #e1f6ea; color: #0b7a56;}
+.icon-alert{background: #fef2f2; color: #dc2626;}
+.icon-export{background: #eef2ff; color: #4338ca;}
+.dash-quick-info{
+  flex: 1;
+  min-width: 0;
+}
+.dash-quick-info strong{
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.dash-quick-info p{
+  margin: 0;
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dash-quick-arrow{
+  font-size: 14px;
+  color: var(--muted-soft);
+  transition: transform .15s ease, color .15s ease;
+}
+.dash-quick-action-card:hover .dash-quick-arrow{
+  transform: translateX(4px);
+  color: var(--brand-600);
+}
+
+/* ---------- COMPLIANCE TARGETS SECTION ---------- */
+.compliance-targets-panel{
+  margin-bottom: 20px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+}
+.targets-kicker{
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--brand-600);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.target-head-badge{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #063c2b, #0a6b4c);
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(6,35,26,.15);
+}
+.target-badge-label{
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: #8fe2bd;
+  text-transform: uppercase;
+}
+.target-head-badge strong{
+  font-size: 16px;
+  font-family: var(--font-display);
+}
+.target-summary-strip{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f8faf9;
+  border: 1px solid #dce7e1;
+  border-radius: var(--radius-md);
+  margin-bottom: 18px;
+}
+@media(max-width: 900px){
+  .target-summary-strip{grid-template-columns: 1fr 1fr;}
+}
+@media(max-width: 550px){
+  .target-summary-strip{grid-template-columns: 1fr;}
+}
+.target-stat-item small{
+  display: block;
+  font-size: 8.5px;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.target-stat-item b{
+  display: block;
+  font-size: 14px;
+  color: var(--ink);
+  margin: 3px 0 2px;
+}
+.target-stat-item span{
+  display: block;
+  font-size: 9.5px;
+  color: var(--muted-soft);
+}
+.compliance-targets-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media(max-width: 950px){
+  .compliance-targets-grid{grid-template-columns: 1fr;}
+}
+.bu-target-card{
+  background: #ffffff;
+  border: 1px solid #dce7e1;
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(6,35,26,.03);
+  transition: all .16s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.bu-target-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--brand-500);
+  box-shadow: 0 10px 24px rgba(6,35,26,.08);
+}
+.bu-target-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.bu-target-badge-wrap{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.bu-target-pill{
+  font-size: 10px;
+  font-weight: 800;
+  background: #eef2f0;
+  color: var(--brand-800);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.bu-target-title{
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 3px;
+  font-weight: 700;
+}
+.bu-target-desc{
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.bu-target-score-box{
+  text-align: right;
+  flex: 0 0 auto;
+}
+.bu-target-score-lbl{
+  display: block;
+  font-size: 8.5px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.bu-target-score-val{
+  display: block;
+  font-size: 24px;
+  font-family: var(--font-display);
+  letter-spacing: -.02em;
+}
+.bu-target-score-sub{
+  display: block;
+  font-size: 9.5px;
+  color: var(--muted-soft);
+}
+.target-progress-section{
+  margin-bottom: 14px;
+}
+.target-progress-labels{
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.target-progress-track{
+  height: 12px;
+  background: #e8eee9;
+  border-radius: 999px;
+  position: relative;
+  overflow: visible;
+}
+.target-progress-fill{
+  height: 100%;
+  border-radius: 999px;
+  transition: width .6s ease;
+}
+.target-marker-line{
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: #04231a;
+  z-index: 2;
+}
+.target-marker-tag{
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #04231a;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.target-milestones-row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+  background: #fbfdfc;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #edf2ef;
+}
+.milestone-step{
+  text-align: center;
+  padding: 4px;
+  border-radius: 6px;
+}
+.milestone-step.active{
+  background: #e6f6ee;
+}
+.milestone-step.projected{
+  border: 1px dashed #cbd5e1;
+}
+.milestone-step small{
+  display: block;
+  font-size: 8.5px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.milestone-step b{
+  display: block;
+  font-size: 12px;
+  color: var(--ink);
+  margin: 1px 0;
+}
+.milestone-step span{
+  display: block;
+  font-size: 8px;
+  color: var(--muted-soft);
+}
+.bu-target-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f3;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.bu-target-link{
+  font-weight: 700;
+  color: var(--brand-600);
+}
 </style>
 
 </head>
@@ -2617,6 +2963,48 @@ body{background:#f3f6f4!important}
     <div class="portal-strip-note">Semua aspek penilaian, pemantauan, dokumentasi dan tindak lanjut.</div>
   </div>
 
+  <!-- Quick Actions Row below Hero Section -->
+  <div class="dashboard-quick-actions-bar">
+    <div class="quick-actions-bar-header">
+      <div class="quick-actions-kicker">AKSI CEPAT PROPER · ONE-CLICK ACCESS</div>
+      <div class="quick-actions-subtitle">Akses instan untuk tugas operasional kepatuhan utama</div>
+    </div>
+    <div class="quick-actions-bar-grid">
+      <button type="button" class="dash-quick-action-card" onclick="window.ProperApp.quickAction('monthly_report')" title="Generate dan cetak laporan kepatuhan bulanan PROPER">
+        <div class="dash-quick-icon-wrap icon-report">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="dash-quick-info">
+          <strong>Generate Monthly Report</strong>
+          <p>Cetak ringkasan ketaatan bulanan seluruh unit usaha (PDF/Excel)</p>
+        </div>
+        <span class="dash-quick-arrow">→</span>
+      </button>
+
+      <button type="button" class="dash-quick-action-card" onclick="window.ProperApp.quickAction('view_alerts')" title="Lihat daftar peringatan dan temuan ketidaksesuaian">
+        <div class="dash-quick-icon-wrap icon-alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="dash-quick-info">
+          <strong>View Recent Alerts</strong>
+          <p>Pantau ketidaksesuaian kritis (TIDAK) &amp; assessment berisiko</p>
+        </div>
+        <span class="dash-quick-arrow">→</span>
+      </button>
+
+      <button type="button" class="dash-quick-action-card" onclick="window.ProperApp.quickAction('export_last')" title="Ekspor langsung assessment terbaru yang telah dilakukan">
+        <div class="dash-quick-icon-wrap icon-export">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="dash-quick-info">
+          <strong>Export Last Inspection</strong>
+          <p>Unduh berkas inspeksi terakhir (PDF resmi lengkap dengan skor)</p>
+        </div>
+        <span class="dash-quick-arrow">→</span>
+      </button>
+    </div>
+  </div>
+
   <div class="portal-section-title">
     <div><span>MENU UTAMA</span><h2>Akses Aspek Penilaian</h2></div>
     <div class="portal-live"><i></i> Data terhubung</div>
@@ -2665,6 +3053,50 @@ body{background:#f3f6f4!important}
 
   <!-- Machine Learning Trend Forecast Widget Container -->
   <div id="mlForecastContainer"></div>
+
+  <!-- Compliance Targets Section: Year-End PROPER Compliance Goals per Business Unit -->
+  <div class="portal-panel compliance-targets-panel" id="complianceTargetsPanel">
+    <div class="portal-panel-head">
+      <div>
+        <span class="targets-kicker">TARGET KEPATUHAN TAHUNAN · YEAR-END PROPER GOALS</span>
+        <h3 style="font-size:16px;color:var(--brand-900);">Compliance Targets &amp; Gap Analysis</h3>
+        <p style="margin:4px 0 0;font-size:11.5px;color:var(--muted);">Progres pencapaian target kepatuhan lingkungan hidup akhir tahun (Target: 95.0% untuk PROPER Hijau / Emas) untuk setiap Business Unit.</p>
+      </div>
+      <div class="target-head-badge" id="enterpriseTargetBadge">
+        <span class="target-badge-label">TARGET ENTERPRISE</span>
+        <strong id="enterpriseTargetPct">95.0%</strong>
+      </div>
+    </div>
+
+    <!-- Enterprise Target Overview Summary Bar -->
+    <div class="target-summary-strip" id="targetSummaryStrip">
+      <div class="target-stat-item">
+        <small>STATUS ENTERPRISE</small>
+        <b id="targetSummaryStatus" style="color:#059669;">ON TRACK (PROPER HIJAU)</b>
+        <span>Berdasarkan rata-rata seluruh unit</span>
+      </div>
+      <div class="target-stat-item">
+        <small>UNIT MEMENUHI TARGET</small>
+        <b id="targetSummaryUnitsCount">3 dari 4 Unit Usaha</b>
+        <span>Memenuhi laju target tahunan</span>
+      </div>
+      <div class="target-stat-item">
+        <small>GAP RATA-RATA MENUJU TARGET</small>
+        <b id="targetSummaryGap">-1.6% menuju 95%</b>
+        <span>Perlu akselerasi kuartal akhir</span>
+      </div>
+      <div class="target-stat-item">
+        <small>TARGET TANGGAL EVALUASI KLHK</small>
+        <b>31 Desember 2026</b>
+        <span>Batas akhir periode penilaian PROPER</span>
+      </div>
+    </div>
+
+    <!-- Business Units Target Cards Grid -->
+    <div class="compliance-targets-grid" id="complianceTargetsGrid">
+      <!-- Dynamically populated by renderComplianceTargets() -->
+    </div>
+  </div>
 
   <!-- Interactive Compliance Map Panel for Business Units -->
   <div class="compliance-map-panel" id="complianceMapCard">
@@ -2733,22 +3165,22 @@ body{background:#f3f6f4!important}
     <div class="monthly-overview-kpis">
       <div class="monthly-kpi-item">
         <span>RATA-RATA TAHUNAN</span>
-        <strong id="d3MetricAvg">91.8%</strong>
-        <small>Baseline Kepatuhan</small>
+        <strong id="d3MetricAvg">—</strong>
+        <small>Kepatuhan Saat Ini</small>
       </div>
       <div class="monthly-kpi-item">
         <span>BULAN TERTINGGI</span>
-        <strong id="d3MetricHigh">Okt (95.4%)</strong>
+        <strong id="d3MetricHigh">—</strong>
         <small>Puncak Penaatan</small>
       </div>
       <div class="monthly-kpi-item">
         <span>MOMENTUM MOM</span>
-        <strong id="d3MetricDelta" class="d3-delta-pill pos">▲ +2.6% MoM</strong>
+        <strong id="d3MetricDelta" class="d3-delta-pill">—</strong>
         <small>Pertumbuhan Trend</small>
       </div>
       <div class="monthly-kpi-item">
         <span>STATUS AMBANG BATAS</span>
-        <strong id="d3MetricStatus" style="color:#059669">TAAT TINGGI (HIJAU)</strong>
+        <strong id="d3MetricStatus">Belum ada data</strong>
         <small>Target KLHK: ≥90%</small>
       </div>
     </div>
@@ -2763,8 +3195,7 @@ body{background:#f3f6f4!important}
     <div class="monthly-overview-footer">
       <div id="d3MonthlyLegend" class="monthly-overview-legend-zone"></div>
       <div class="monthly-insight-note">
-        <span>💡</span>
-        <span><b>Analisis Tren:</b> Kepatuhan teknis menunjukkan konsistensi di atas ambang batas 90%. Performa optimal pada pengelolaan IPAL dan pemantauan emisi cerobong berkontribusi menjaga status PROPER dalam kategori Hijau.</span>
+        <span class="hidden"></span>
       </div>
     </div>
   </div>
@@ -3392,7 +3823,7 @@ body{background:#f3f6f4!important}
 <script src="./proper-d3-monthly.js"></script>
 <script>
 /* GANTI URL INI dengan URL Web App Google Apps Script Anda */
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycbx9txR_oIZ9fJusEYRtGcqlGBDI9uoAVYpFa03Pwp2cVLJuyTm_-F5FbbrmsFstsLVz/exec';
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbylQ_TqQwDwXYdmA0NgQNV7Q9P1hJryu9LV4Xx1jA3H0TSkKVfMcWwV9FOYyBRTteH1/exec';
 
 const items = ["Apakah terdapat alat pengukur debit air limbah", "Apakah terdapat akses yang memudahkan petugas untuk melaksanakan pemeriksaan atau pemantauan", "Apakah tersedia tempat penyimpanan sementara limbah sludge", "Apakah ditemukan praktek pengolahan air limbah dengan cara pengenceran?", "Apakah terdapat fasilitas pengambilan padatan?", "apakah saluran air limbah terpisah dari saluran air hujan", "apakah unit pengolahan dan saluran air limbah kedap", "Apakah pada titik penaatan dilengkapi dengan nama dan titik ordinat?", "Apakah tidak ada praktek bypass air limbah atau membuang air limbah tanpa diolah", "apakah 5R lokasi IPAL terjaga", "apabila terdapat pemanfaatan air limbah, pakah pemanfaatan air limbah di lokasi yang sudah ditentukan", "Apakah ada pencatatan harian debit dan pH?"];
 
@@ -3553,17 +3984,18 @@ async function loadPPAHistory(){
   }
 }
 
+const todayLocal=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 function showPage(id){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
  $(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'});
- if(id==='ppa'){renderForm();loadPPAHistory();}
+ if(id==='ppa'){if(!$('ppaBody')?.children.length)renderForm();loadPPAHistory();}
  if(id==='monitoring'||id==='rekap') { loadAllModulesRecap(false); }
  if(id==='dashboard' && allPPAData.length===0) loadData();
- if(id==='plb3'){renderPLB3Form();loadPLB3();}
- if(id==='plb3darurat'){renderPLB3DaruratForm();if(!$('daruratDate').value)$('daruratDate').value=new Date().toISOString().slice(0,10);loadPLB3Darurat();}
- if(id==='plnonb3'){renderPLNonB3Form();if(!$('plnonb3Date').value)$('plnonb3Date').value=new Date().toISOString().slice(0,10);loadPLNonB3();}
- if(id==='b3'){renderB3Forms();if(!$('b3Date').value)$('b3Date').value=new Date().toISOString().slice(0,10);loadB3();}
+ if(id==='plb3'){if(!$('plb3Body')?.children.length)renderPLB3Form();loadPLB3();}
+ if(id==='plb3darurat'){renderPLB3DaruratForm();if(!$('daruratDate').value)$('daruratDate').value=todayLocal();loadPLB3Darurat();}
+ if(id==='plnonb3'){if(!$('plnonb3Body')?.children.length)renderPLNonB3Form();if(!$('plnonb3Date').value)$('plnonb3Date').value=todayLocal();loadPLNonB3();}
+ if(id==='b3'){if(!$('b3Body')?.children.length)renderB3Forms();if(!$('b3Date').value)$('b3Date').value=todayLocal();loadB3();}
  if(id==='sampah') loadSampah();
  if(id==='emisi') loadEmisi();
  if(id==='dashboard') loadExecutiveAnalytics(false);
@@ -5515,7 +5947,7 @@ function resetPLNonB3(){
   if($('plnonb3BusinessUnit'))$('plnonb3BusinessUnit').value='';
   if($('plnonb3Auditee'))$('plnonb3Auditee').value='';
   if($('plnonb3Site'))$('plnonb3Site').value='';
-  if($('plnonb3Date'))$('plnonb3Date').value=new Date().toISOString().slice(0,10);
+  if($('plnonb3Date'))$('plnonb3Date').value=todayLocal();
   renderPLNonB3Form();
 }
 
@@ -5548,7 +5980,8 @@ async function submitPLNonB3(){
   }));
 
   const payload={
-    action:'savePLNonB3',
+    action:isEditingModule('PLnonB3')?'updateAssessment':'savePLNonB3',
+    ...(isEditingModule('PLnonB3')?{module:'PLnonB3',submissionId:window.editingAssessment.submissionId}:{}),
     assessor,
     site,
     assessmentDate:date,
@@ -6435,6 +6868,155 @@ function renderExecutive(dataMap){
   const risk=s.all.filter(r=>scoreOf(r)<70).sort((a,b)=>scoreOf(a)-scoreOf(b)).slice(0,6);
   $('execRisk').innerHTML=risk.length?risk.map(r=>`<div class="clickable-card" onclick="openExecutiveRecord(${JSON.stringify(r).replace(/</g,'&lt;')})" style="padding:9px;border-bottom:1px solid #edf2ef;border-radius:10px"><div style="display:flex;justify-content:space-between;gap:8px"><b style="font-size:10px">${escapeHtml(siteOf(r))}</b><span class="detail-pill"><i class="status-dot bad"></i>${scoreOf(r)}%</span></div><small style="color:#82918d;font-size:9px">${escapeHtml(r.assessor||'PIC')} · ${escapeHtml(r.timestamp||r.assessmentDate||'-')}</small></div>`).join(''):'<div class="module-empty">Tidak ada assessment di bawah 70%.</div>';
   $('execCoverage').innerHTML=s.modules.map(m=>`<div class="clickable-card" onclick="openExecutiveDetail('module','${m.key}')" style="margin-bottom:11px;padding:8px;border-radius:10px"><div style="display:flex;justify-content:space-between;font-size:10px"><b>${escapeHtml(m.label)}</b><span>${m.count} assessment</span></div><div class="meter"><i style="width:${Math.min(100,m.count?Math.max(12,m.pct):0)}%"></i></div></div>`).join('');
+  renderComplianceTargets(dataMap);
+}
+
+function renderComplianceTargets(dataMap){
+  const grid = $('complianceTargetsGrid');
+  if(!grid) return;
+
+  const s = execSummary(dataMap);
+  const units = [
+    {key:'PT GGP',label:'PT GGP (Great Giant Pineapple)',desc:'Pengolahan Nanas, Biogas & IPAL Terpadu',target:95},
+    {key:'PT UJA',label:'PT UJA (Umas Jaya Agrotama)',desc:'Pabrik Tepung Tapioka & Kolam Anaerobik',target:95},
+    {key:'PT GGL',label:'PT GGL (Great Giant Livestock)',desc:'Peternakan Sapi Terpadu, Kompos & Limbah',target:95},
+    {key:'PG4',label:'PG4 (Plantation Group 4)',desc:'Operasional Perkebunan & Sarana Prasarana',target:95}
+  ];
+
+  let onTrackCount = 0;
+  let totalGap = 0;
+
+  const cardsHtml = units.map(u => {
+    const rows = s.all.filter(r => String(r.businessUnit || '').trim() === u.key);
+    let currentPct = 0;
+    if (rows.length) {
+      currentPct = Math.round(rows.reduce((sum, r) => sum + scoreOf(r), 0) / rows.length * 10) / 10;
+    } else {
+      currentPct = null;
+    }
+
+    const gap = currentPct===null ? null : Math.round((currentPct - u.target) * 10) / 10;
+    if(gap!==null) totalGap += gap;
+
+    const progressOfGoal = currentPct===null ? 0 : Math.min(100, Math.round((currentPct / u.target) * 100));
+
+    let statusCls = currentPct===null ? 'neutral' : 'good';
+    let statusLabel = currentPct===null ? 'BELUM ADA ASSESSMENT' : 'TARGET TERCAPAI (≥95%)';
+    let statusColor = '#64748b';
+
+    if (currentPct!==null && currentPct >= u.target) {
+      statusCls = 'good';
+      statusLabel = 'TARGET TERCAPAI (≥95%)';
+      statusColor = '#059669';
+      onTrackCount++;
+    } else if (currentPct!==null && currentPct >= 90) {
+      statusCls = 'warn';
+      statusLabel = 'ON TRACK (PROPER HIJAU)';
+      statusColor = '#0b7a56';
+      onTrackCount++;
+    } else if(currentPct!==null) {
+      statusCls = 'bad';
+      statusLabel = 'PERLU AKSELERASI (<90%)';
+      statusColor = '#d97706';
+    }
+
+    const gapText = gap===null ? 'Belum ada data assessment' : (gap >= 0 ? `+${gap}% melampaui target` : `${gap}% lagi menuju target 95%`);
+
+    const q1 = currentPct===null ? null : currentPct;
+    const q2 = currentPct===null ? null : currentPct;
+    const q3 = currentPct===null ? null : currentPct;
+    const q4Projected = currentPct===null ? null : currentPct;
+
+    return `
+      <div class="bu-target-card" onclick="filterExecutiveByBU('${escapeHtml(u.key)}')">
+        <div class="bu-target-top">
+          <div>
+            <div class="bu-target-badge-wrap">
+              <span class="bu-target-pill">${escapeHtml(u.key)}</span>
+              <span class="badge ${statusCls}" style="font-size:9.5px;padding:3px 9px;">${statusLabel}</span>
+            </div>
+            <h4 class="bu-target-title">${escapeHtml(u.label)}</h4>
+            <p class="bu-target-desc">${escapeHtml(u.desc)}</p>
+          </div>
+          <div class="bu-target-score-box">
+            <span class="bu-target-score-lbl">KETAATAN SAAT INI</span>
+            <strong class="bu-target-score-val" style="color:${statusColor};">${currentPct}%</strong>
+            <small class="bu-target-score-sub">${rows.length ? rows.length + ' assessment terdata' : 'Estimasi baseline audit'}</small>
+          </div>
+        </div>
+
+        <div class="target-progress-section">
+          <div class="target-progress-labels">
+            <span>Progress Menuju Target Akhir Tahun (${u.target}%)</span>
+            <b style="color:${statusColor};">${progressOfGoal}% Terpenuhi (${gapText})</b>
+          </div>
+          <div class="target-progress-track">
+            <div class="target-progress-fill" style="width:${Math.min(100, currentPct)}%;background:${statusColor};"></div>
+            <div class="target-marker-line" style="left:95%;" title="Target PROPER 95%">
+              <span class="target-marker-tag">Goal: 95%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="target-milestones-row">
+          <div class="milestone-step">
+            <small>Q1</small>
+            <b>${q1}%</b>
+            <span>Realisasi</span>
+          </div>
+          <div class="milestone-step">
+            <small>Q2</small>
+            <b>${q2}%</b>
+            <span>Realisasi</span>
+          </div>
+          <div class="milestone-step active">
+            <small>Q3</small>
+            <b>${q3}%</b>
+            <span>Posisi Terkini</span>
+          </div>
+          <div class="milestone-step projected">
+            <small>Q4 (Target)</small>
+            <b style="color:${statusColor};">${q4Projected}%</b>
+            <span>Proyeksi Goal</span>
+          </div>
+        </div>
+
+        <div class="bu-target-footer">
+          <span>🎯 Target KLHK: PROPER Hijau / Emas (≥95%)</span>
+          <span class="bu-target-link">Filter Unit Ini →</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  grid.innerHTML = cardsHtml;
+
+  const avgGap = Math.round(totalGap / units.length * 10) / 10;
+  if ($('targetSummaryUnitsCount')) {
+    $('targetSummaryUnitsCount').textContent = `${onTrackCount} dari ${units.length} Unit Usaha`;
+  }
+  if ($('targetSummaryGap')) {
+    $('targetSummaryGap').textContent = avgGap >= 0 ? `+${avgGap}% di atas target 95%` : `${avgGap}% menuju target 95%`;
+    $('targetSummaryGap').style.color = avgGap >= 0 ? '#059669' : '#d97706';
+  }
+  if ($('targetSummaryStatus')) {
+    if (onTrackCount >= 3) {
+      $('targetSummaryStatus').textContent = 'ON TRACK (KANDIDAT PROPER HIJAU / EMAS)';
+      $('targetSummaryStatus').style.color = '#059669';
+    } else {
+      $('targetSummaryStatus').textContent = 'PERLU AKSELERASI AKHIR TAHUN';
+      $('targetSummaryStatus').style.color = '#d97706';
+    }
+  }
+}
+
+function filterExecutiveByBU(unitKey) {
+  const sel = $('execFilterBusinessUnit');
+  if (sel) {
+    sel.value = unitKey;
+    if (typeof applyExecutiveFilters === 'function') applyExecutiveFilters();
+    sel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 
 async function loadExecutiveAnalytics(force=false){
@@ -6927,10 +7509,7 @@ function filterAspectHistory(module,bodyId,typeHint){
     renderGenericHistory(bodyId,filtered,typeHint);
   }
 
-  refreshModuleAnalyticsFor(
-    module,
-    filtered
-  );
+  renderModuleAnalytics(module, filtered);
 }
 
 function getManualFindingRows(module){
@@ -7355,121 +7934,6 @@ function resetManualFindings(module){
   clearManualFindingContext(module);
 }
 
-function updateManualFinding(module,id,key,value){
-  const item=(manualFindingsState[module]||[])
-    .find(x=>String(x.id)===String(id));
-
-  if(item)item[key]=value;
-}
-
-function removeManualFinding(module,id){
-  manualFindingsState[module]=
-    (manualFindingsState[module]||[])
-      .filter(x=>String(x.id)!==String(id));
-  renderManualFindings(module);
-}
-
-function getManualFindingItems(module){
-  return (manualFindingsState[module]||[])
-    .filter(x=>
-      String(x.text||'').trim() &&
-      (x.status==='YA'||x.status==='TIDAK')
-    )
-    .map((x,i)=>({
-      no:1001+i,
-      ketentuan:'TEMUAN MANUAL: '+String(x.text||'').trim(),
-      status:x.status,
-      keterangan:String(x.note||'').trim(),
-      documentation:'',
-      temuanManual:true
-    }));
-}
-
-function renderManualFindings(module){
-  const root=$('manualFindingPanel_'+module);
-  if(!root)return;
-
-  const list=manualFindingsState[module]||[];
-
-  root.innerHTML=`
-    <div class="manual-finding-head">
-      <div>
-        <span>INSPEKSI LAPANGAN</span>
-        <h3>Temuan di Luar Template</h3>
-        <p>Tambahkan checklist/temuan yang tidak ada pada template standar.</p>
-      </div>
-      <button type="button"
-        class="btn primary manual-add-btn"
-        onclick="addManualFinding('${module}')">
-        Tambah Temuan
-      </button>
-    </div>
-
-    ${
-      list.length
-      ?list.map((x,i)=>`
-        <div class="manual-finding-row">
-          <div class="manual-finding-no">T${i+1}</div>
-          <div class="manual-finding-main">
-            <input
-              type="text"
-              value="${escapeHtml(x.text||'')}"
-              placeholder="Tulis temuan / ketentuan tambahan..."
-              oninput="updateManualFinding('${module}','${x.id}','text',this.value)"
-            >
-            <div class="manual-finding-bottom">
-              <select
-                onchange="updateManualFinding('${module}','${x.id}','status',this.value);this.className=this.value==='YA'?'status-yes':this.value==='TIDAK'?'status-no':''"
-                class="${x.status==='YA'?'status-yes':x.status==='TIDAK'?'status-no':''}"
-              >
-                <option value="">YA / TIDAK</option>
-                <option value="YA" ${x.status==='YA'?'selected':''}>YA</option>
-                <option value="TIDAK" ${x.status==='TIDAK'?'selected':''}>TIDAK</option>
-              </select>
-
-              <input
-                type="text"
-                value="${escapeHtml(x.note||'')}"
-                placeholder="Keterangan / bukti pendukung..."
-                oninput="updateManualFinding('${module}','${x.id}','note',this.value)"
-              >
-              ${x.documentation?`<a href="${escapeHtml(x.documentation)}" target="_blank" class="manual-existing-photo">Foto tersimpan</a>`:''}
-
-              <input
-                type="file"
-                accept="image/*"
-                class="evidence-file"
-                data-module="${module}"
-                data-no="${1001+i}"
-              >
-
-              <button type="button"
-                class="danger-outline sm"
-                onclick="removeManualFinding('${module}','${x.id}')">
-                Hapus
-              </button>
-            </div>
-          </div>
-        </div>
-      `).join('')
-      :`<div class="manual-finding-empty">
-          Belum ada temuan tambahan.
-          Klik <b>Tambah Temuan</b> untuk menambahkan.
-        </div>`
-    }
-  `;
-
-  enhanceEvidenceInputs(
-    '#manualFindingPanel_'+module,
-    module
-  );
-}
-
-function resetManualFindings(module){
-  manualFindingsState[module]=[];
-  renderManualFindings(module);
-}
-
 
 function bindManualFindingContextSelectors(){
 
@@ -7691,7 +8155,8 @@ async function editModuleAssessment(row){
       'PLB3':{page:'plb3',assessor:'plb3Assessor',site:'plb3Site',date:'plb3Date',key:'plb3',businessUnit:'plb3BusinessUnit',auditee:'plb3Auditee'},
       'PLB3 Tanggap Darurat':{page:'plb3darurat',assessor:'daruratAssessor',site:'daruratSite',date:'daruratDate',key:'darurat',businessUnit:'daruratBusinessUnit',auditee:'daruratAuditee'},
       'B3':{page:'b3',assessor:'b3Assessor',site:'b3Site',date:'b3Date',key:'b3',businessUnit:'b3BusinessUnit',auditee:'b3Auditee'},
-      'Sampah':{page:'sampah',assessor:'sampahAssessor',site:'sampahSite',date:'sampahDate',key:'sampah',businessUnit:'sampahBusinessUnit',auditee:'sampahAuditee'}
+      'Sampah':{page:'sampah',assessor:'sampahAssessor',site:'sampahSite',date:'sampahDate',key:'sampah',businessUnit:'sampahBusinessUnit',auditee:'sampahAuditee'},
+      'PLnonB3':{page:'plnonb3',assessor:'plnonb3Assessor',site:'plnonb3Site',date:'plnonb3Date',key:'plnonb3',businessUnit:'plnonb3BusinessUnit',auditee:'plnonb3Auditee'}
     };
 
     const cfg=map[module];
@@ -7888,7 +8353,7 @@ async function editModuleAssessment(row){
 
 function cancelAssessmentEdit(){
   clearEditMode();
-  const today=new Date().toISOString().slice(0,10);
+  const today=todayLocal();
   const pairs=[
     ['ppa','assessor','site','assessmentDate'],
     ['emisi','emisiAssessor','emisiSite','emisiDate'],
@@ -8150,7 +8615,7 @@ function renderData(data,rebuild=true){
  if($('mon2')){$('mon2').textContent=(vals[1]?a[vals[1]].pct:0)+'%';$('mon2s').textContent=(vals[1]?a[vals[1]].yes:0)+' YA';}
  if($('mon3')){$('mon3').textContent=(vals[2]?a[vals[2]].pct:0)+'%';$('mon3s').textContent=(vals[2]?a[vals[2]].yes:0)+' YA';}
 
- renderTrend(data);renderRanking(data);renderHeatmap(data);renderDonut(data);
+ // legacy dashboard renderers intentionally disabled; executive dashboard is source of truth.
 
  const rows=data.slice().sort((a,b)=>String(b.timestamp).localeCompare(String(a.timestamp))).slice(0,8);
  $('dashboardTable').querySelector('tbody').innerHTML=rows.length?rows.map(r=>`<tr>
@@ -8625,7 +9090,7 @@ function safeInitializeDashboard(){
   safeCall('renderPLB3DaruratForm',renderPLB3DaruratForm);
   safeCall('renderB3Forms',renderB3Forms);
 
-  const today=new Date().toISOString().slice(0,10);
+  const today=todayLocal();
 
   const ed=$('emisiDate');
   if(ed && !ed.value)ed.value=today;
@@ -9580,13 +10045,7 @@ setTimeout(()=>loadExecutiveAnalyticsV2(false),1200);
       let data;
       const action=editingMessageId?'editChatMessage':'sendChatMessage';
       const payload=editingMessageId?{action,id:editingMessageId,text}:{action,room:activeRoom,text};
-      try{
-        data=await postJSON(payload);
-      }catch(firstErr){
-        await postJSONNoCors(payload);
-        await new Promise(r=>setTimeout(r,700));
-        data=await jsonpGet('getChatMessages',{room:activeRoom,limit:100});
-      }
+      data=await postJSON(payload);
       if(data.status!=='success') throw Error(data.message||('Pesan gagal '+(editingMessageId?'diperbarui':'dikirim')));
       input.value=''; cancelProperChatReply(); const wasEditing=!!editingMessageId; editingMessageId=null; input.placeholder='Ketik pesan...'; await fetchProperChatMessages();
       toast(wasEditing?'Pesan diperbarui.':'Pesan terkirim.');
@@ -9612,8 +10071,7 @@ setTimeout(()=>loadExecutiveAnalyticsV2(false),1200);
     chatBusy=true;
     try{
       let data;
-      try{ data=await postJSON({action:'deleteChatMessage',id}); }
-      catch(e){ await postJSONNoCors({action:'deleteChatMessage',id}); data={status:'success'}; await new Promise(r=>setTimeout(r,700)); }
+      data=await postJSON({action:'deleteChatMessage',id});
       if(data.status!=='success') throw Error(data.message||'Pesan gagal dihapus');
       await fetchProperChatMessages();
       toast('Pesan dihapus.');
@@ -9622,329 +10080,33 @@ setTimeout(()=>loadExecutiveAnalyticsV2(false),1200);
   };
 
   // More reliable profile save: normal POST first, no-cors fallback, then verify by JSONP.
-  window.saveProfileChanges = async function(){
-    const current=getCurrentUser()||{};
-    const name=String(document.getElementById('profileEditName')?.value||'').trim();
-    const input=document.getElementById('profileEditPhoto');
-    const f=input?.files?.[0];
-
-    if(!current.id){
-      document.getElementById('profileMsg').textContent='Identitas akun tidak ditemukan.';
-      return;
+window.saveProfileChanges = async function(){
+  const current=getCurrentUser()||{};
+  const name=String($('profileEditName')?.value||'').trim();
+  const input=$('profileEditPhoto');
+  const f=input?.files?.[0];
+  const msg=$('profileMsg');
+  if(!current.id){if(msg)msg.textContent='Identitas akun tidak ditemukan.';return;}
+  if(name.length<2){if(msg)msg.textContent='Nama lengkap minimal 2 karakter.';return;}
+  const btn=document.querySelector('#profileModal .profile-foot .btn.primary');
+  if(btn){btn.disabled=true;btn.textContent='Menyimpan...';}
+  try{
+    let profilePhoto=null;
+    if(f){
+      const raw=f.__croppedData?f.__croppedData:(await fileToDataURL(f)).split(',').pop();
+      profilePhoto={fileName:f.__croppedName||('profile-'+Date.now()+'.jpg'),mimeType:'image/jpeg',data:raw};
     }
-    if(name.length<2){
-      document.getElementById('profileMsg').textContent='Nama lengkap minimal 2 karakter.';
-      return;
-    }
-
-    const btn=document.querySelector('#profileModal .profile-foot .btn.primary');
-    if(btn){btn.disabled=true;btn.textContent='Menyimpan...'}
-    document.getElementById('profileMsg').textContent='Menyimpan perubahan...';
-
-    try{
-      let profilePhoto=null;
-      if(f){
-        if(f.__croppedData){
-          profilePhoto={
-            fileName:f.__croppedName||('profile-'+Date.now()+'.jpg'),
-            mimeType:'image/jpeg',
-            data:f.__croppedData
-          };
-        }else{
-          const raw=await fileToDataURL(f);
-          profilePhoto={
-            fileName:'profile-'+Date.now()+'.jpg',
-            mimeType:f.type||'image/jpeg',
-            data:raw.split(',').pop()
-          };
-        }
-      }
-
-      // Update UI optimistically with the cropped photo while saving.
-      const optimistic=Object.assign({},current,{name:name});
-      if(profilePhoto) optimistic.profilePhotoDataUrl='data:image/jpeg;base64,'+profilePhoto.data;
-      setCurrentUser(optimistic,getAuthToken());
-      updateLoggedUserUI();
-
-      // Use form POST to avoid CORS/redirect issues with Apps Script Web Apps.
-      await submitProfileFormNoCors({
-        action:'updateProfile',
-        userToken:getAuthToken(),
-        name:name,
-        profilePhotoData:profilePhoto?profilePhoto.data:'',
-        profilePhotoMimeType:profilePhoto?profilePhoto.mimeType:'',
-        profilePhotoFileName:profilePhoto?profilePhoto.fileName:''
-      });
-
-      // Give Apps Script/Drive a moment to commit, then verify through JSONP.
-      await new Promise(r=>setTimeout(r,1400));
-      const result=await jsonpGet('getProfile',{});
-
-      if(!result||result.status!=='success') {
-        throw new Error((result&&result.message)||'Server belum mengonfirmasi perubahan profil.');
-      }
-
-      const updated=Object.assign({},current,result.user||{},{name});
-      if(profilePhoto){
-        updated.profilePhotoDataUrl='data:image/jpeg;base64,'+profilePhoto.data;
-      } else if(current.profilePhotoDataUrl){
-        updated.profilePhotoDataUrl=current.profilePhotoDataUrl;
-      }
-
-      setCurrentUser(updated,result.token||getAuthToken());
-      updateLoggedUserUI();
-      if(input)input.value='';
-      closeProfileModal();
-      toast('✓ Profil berhasil diperbarui.');
-    }catch(err){
-      console.error('saveProfileChanges',err);
-      const msg=String(err?.message||err);
-      document.getElementById('profileMsg').textContent=
-        msg.includes('Timeout')
-          ? 'Server terlalu lama merespons. Coba tekan Simpan lagi.'
-          : msg;
-      // Restore known local profile state if save could not be confirmed.
-      setCurrentUser(current,getAuthToken());
-      updateLoggedUserUI();
-    }finally{
-      if(btn){btn.disabled=false;btn.textContent='Simpan Perubahan'}
-    }
-  };
-
-  function loadChatOnPage(){
-    renderProperChatRooms();
-    if(!chatPollTimer){
-      chatPollTimer=setInterval(()=>{if(document.getElementById('chat')?.classList.contains('active'))fetchProperChatMessages();},12000);
-    }
-  }
-  const oldShowPage=window.showPage;
-  if(typeof oldShowPage==='function'){
-    window.showPage=function(id){
-      oldShowPage(id);
-      if(id==='chat') loadChatOnPage();
-      if(id==='monitoring'||id==='rekap') setTimeout(()=>loadAllModulesRecap(false),80);
-    };
-  }
-
-  // Robust recap: no hard dependency on optional DOM nodes.
-  window.renderAllModulesRecap=function(rows){
-  rows=Array.isArray(rows)?rows:[];
-
-  const set=(id,val)=>{
-    const el=document.getElementById(id);
-    if(el)el.textContent=val;
-  };
-
-  const setHtml=(id,val)=>{
-    const el=document.getElementById(id);
-    if(el)el.innerHTML=val;
-  };
-
-  const sites=new Set(
-    rows
-      .map(r=>normalizeSite(r.site))
-      .filter(Boolean)
-  );
-
-  const modules=new Set(
-    rows
-      .map(r=>r.moduleKey||r.module)
-      .filter(Boolean)
-  );
-
-  /*
-   * Recompute YES/TIDAK from checklist details when available.
-   * This protects the executive table from an incorrectly cached
-   * yes/no aggregate.
-   */
-  rows=rows.map(r=>{
-    const details=Array.isArray(r.details)?r.details:[];
-
-    if(details.length){
-      const yes=details.filter(x=>
-        String(x.status||'').trim().toUpperCase()==='YA'
-      ).length;
-
-      const no=details.filter(x=>
-        String(x.status||'').trim().toUpperCase()==='TIDAK'
-      ).length;
-
-      const total=yes+no;
-
-      return Object.assign({},r,{
-        total:total||Number(r.total||0),
-        yes:yes,
-        no:no,
-        percentage:total
-          ?Math.round(yes/total*100)
-          :Number(r.percentage||0)
-      });
-    }
-
-    return r;
-  });
-
-  const avg=rows.length
-    ?Math.round(
-        rows.reduce(
-          (sum,r)=>sum+Number(r.percentage||0),
-          0
-        )/rows.length
-      )
-    :0;
-
-  set('allRecapCount',rows.length);
-  set('allRecapSites',sites.size);
-  set('allRecapAvg',avg+'%');
-  set('allRecapModules',modules.size+'/6');
-  set('rekapModuleBadge',rows.length+' assessment');
-  set(
-    'lastSync',
-    'Semua aspek tersinkron: '+
-    new Date().toLocaleString('id-ID')
-  );
-
-  const sorted=rows.slice().sort((a,b)=>
-    String(
-      b.timestamp||
-      b.assessmentDate||
-      ''
-    ).localeCompare(
-      String(
-        a.timestamp||
-        a.assessmentDate||
-        ''
-      )
-    )
-  );
-
-  const empty=
-    '<tr><td colspan="9" style="text-align:center;padding:28px;color:#64756f">Belum ada data dari aspek manapun.</td></tr>';
-
-  const makeRow=(r)=>{
-    const moduleKey=
-      String(
-        r.moduleKey||
-        r.module||
-        ''
-      ).trim();
-
-    const rowJson=
-      JSON.stringify(
-        Object.assign({},r,{
-          module:moduleKey,
-          moduleKey:moduleKey
-        })
-      ).replace(/'/g,'&#39;');
-
-    /*
-     * Always display the actions. Backend validates the owner.
-     */
-    const actions=
-      `<span class="row-actions" onclick="event.stopPropagation()">
-         <button
-           class="edit-outline sm"
-           type="button"
-           onclick='editModuleAssessment(${rowJson})'>
-           Edit
-         </button>
-         <button
-           class="danger-outline sm"
-           type="button"
-           onclick='deleteAssessment(${rowJson},event)'>
-           Hapus
-         </button>
-       </span>`;
-
-    return `<tr class="recap-click-row" onclick='openAssessmentChecklist(${rowJson})'>
-      <td><b>${escapeHtml(moduleKey||'-')}</b></td>
-      <td>${escapeHtml(r.timestamp||r.assessmentDate||'-')}</td>
-      <td>${escapeHtml(r.assessor||'-')}</td>
-      <td>${escapeHtml(displaySite(r.site)||'-')}</td>
-      <td>${Number(r.yes||0)}</td>
-      <td>${Number(r.no||0)}</td>
-      <td><b>${Number(r.percentage||0)}%</b></td>
-      <td>${statusBadge(Number(r.percentage||0))}</td>
-      <td>${actions}</td>
-    </tr>`;
-  };
-
-  const body=
-    sorted.length
-      ?sorted.map(makeRow).join('')
-      :empty;
-
-  setHtml('monitorBody',body);
-  setHtml('rekapBody',body);
+    const d=await postJSON({action:'updateProfile',userToken:getAuthToken(),name,profilePhoto});
+    if(!d||d.status!=='success')throw new Error(d?.message||'Profil gagal disimpan.');
+    setCurrentUser(Object.assign({},current,d.user||{},{name}),d.token||getAuthToken());
+    updateLoggedUserUI();
+    if(input)input.value='';
+    closeProfileModal();
+    toast('✓ Profil berhasil diperbarui.');
+  }catch(e){if(msg)msg.textContent=String(e.message||e);toast('Profil belum tersimpan: '+String(e.message||e));}
+  finally{if(btn){btn.disabled=false;btn.textContent='Simpan Perubahan';}}
 };
 
-  // Safer GET for JSONP. Existing jsonpGet can be used by the rest of the app.
-  const oldLoadAll=window.loadAllModulesRecap;
-  window.loadAllModulesRecap=async function(force=false){
-    if(window.__allRecapLoading && !force) return window.__allRecapLoading;
-    try{
-      return await oldLoadAll(force);
-    }catch(e){
-      // Final fallback: load each module independently and merge summaries.
-      const actions=['getPPA','getEmisi','getPLB3','getPLB3Darurat','getB3','getSampah'];
-      const labels={getPPA:'PPA',getEmisi:'Emisi',getPLB3:'PLB3',getPLB3Darurat:'PLB3 Tanggap Darurat',getB3:'B3',getSampah:'Sampah'};
-      const results=[];
-      for(const action of actions){
-        try{
-          const d=await jsonpGet(action,{});
-          (d.data||[]).forEach(r=>results.push({...r,module:labels[action],moduleKey:labels[action]}));
-        }catch(_){}
-      }
-      renderAllModulesRecap(results);
-      return results;
-    }
-  };
-
-  document.addEventListener('click',e=>{
-    if(!e.target.closest('.proper-chat-emoji')&&!e.target.closest('.proper-emoji-panel')) document.getElementById('properEmojiPanel')?.classList.remove('show');
-  });
-})();
-</script>
-
-
-
-<script id="plb3-portal-sync">
-(function(){
-  function sync(){
-    const pctEl=document.getElementById('lb3Pct');
-    const badge=document.getElementById('lb3PctMirror');
-    const score=document.getElementById('lb3Score');
-    const bar=document.getElementById('lb3Bar');
-    if(pctEl){
-      const t=pctEl.textContent||'0%';
-      if(badge)badge.textContent=t;
-      if(score)score.textContent=t;
-      if(bar)bar.style.width=t;
-    }
-    const c=document.getElementById('plb3Count');
-    const cv=document.getElementById('plb3CountValue');
-    if(c&&cv){const m=(c.textContent||'').match(/\d+/);cv.textContent=m?m[0]:'0';}
-    const avg=document.getElementById('plb3AvgValue');
-    if(avg&&pctEl)avg.textContent=pctEl.textContent||'0%';
-    const st=document.getElementById('plb3StatusValue');
-    if(st&&pctEl){const n=parseInt(pctEl.textContent||'0',10);st.textContent=n>=90?'Baik':n>=70?'Perlu Pantauan':'Perlu Tindak Lanjut';}
-  }
-  setInterval(sync,600);
-  document.addEventListener('input',sync,true);
-})();
-</script>
-
-<script id="proper-aspect-ui-v2-js">
-(function(){
-const ASPECT_SYMBOLS={"ppa":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.3 6 10.3A6 6 0 0 1 6 13.3C6 9.3 12 3 12 3Z"/><path d="M9 14.5c1.5 1.2 3.5 1.4 5.2.6"/></svg>`,"emisi":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 19v-7h4v7M14 19V7h4v12"/><path d="M8 5c.8-1.2 2.2-1.2 3 0M15 3c.8-1.2 2.2-1.2 3 0"/></svg>`,"plb3":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7h14M7 4h10v16H7z"/><path d="M9 10h6M9 14h6M9 18h3"/><path d="M4 7h16"/></svg>`,"plb3darurat":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 21 20H3L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg>`,"plnonb3":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 5-2 3 2 3M15 19l2-3-2-3M6 11l3 1 3-2M18 13l-3-1-3 2"/><path d="M9 8h6l3 5-3 5H9l-3-5 3-5Z"/></svg>`,"b3":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v5.2L5.5 16a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.2V3"/><path d="M7.5 14h9"/></svg>`,"sampah":`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"/><path d="M10 10v7M14 10v7"/></svg>`};
-const ASPECT_CONFIG={
-  "ppa":{"title":"Pengendalian Pencemaran Air (PPA)","desc":"Checklist inspeksi untuk memastikan fasilitas pengendalian pencemaran air memenuhi ketentuan teknis dan kondisi lapangan sesuai ruang lingkup pemeriksaan.","count":12,"reload":"loadPPAHistory","symbol":"ppa"},
-  "emisi":{"title":"Pengendalian Pencemaran Udara (PPU)","desc":"Checklist inspeksi untuk memastikan fasilitas dan kondisi sumber emisi memenuhi ketentuan teknis pengendalian pencemaran udara.","count":6,"reload":"loadEmisi","symbol":"emisi"},
-  "plb3":{"title":"Pengelolaan Limbah B3 (PLB3)","desc":"Checklist inspeksi untuk memastikan fasilitas penyimpanan Limbah B3 memenuhi persyaratan teknis, keselamatan, dan pengelolaan yang ditetapkan.","count":30,"reload":"loadPLB3","symbol":"plb3"},
-  "b3":{"title":"Pengelolaan B3 dan PCBs","desc":"Checklist inspeksi untuk memastikan pengelolaan B3 dan PCBs memenuhi ketentuan teknis pada ruang lingkup pemeriksaan.","count":30,"reload":"loadB3","symbol":"b3"},
-  "plnonb3":{"title":"Pengelolaan Limbah Non-B3","desc":"Checklist inspeksi untuk memastikan fasilitas penyimpanan dan pengelolaan Limbah Non-B3 memenuhi ketentuan master dan kondisi lapangan.","count":20,"reload":"loadPLNonB3","symbol":"plnonb3"},
-  "sampah":{"title":"Pengelolaan Sampah","desc":"Checklist inspeksi untuk memastikan pengurangan, pemilahan, penanganan, dan pengelolaan sampah dilakukan sesuai ketentuan yang telah ditetapkan.","count":9,"reload":"loadSampah","symbol":"sampah"}
-};
 function esc(v){return String(v??'').replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];});}
 function injectPage(id){
   const page=document.getElementById(id); if(!page||page.dataset.aspectModernReady==='1')return;
