@@ -4751,7 +4751,7 @@ async function submitPLB3Darurat(){
  if(!businessUnit){toast('Pilih Business Unit terlebih dahulu.');return;}
  if(!assessor||!site||!date){toast('Nama penilai, lokasi dan tanggal PLB3 Tanggap Darurat wajib diisi.');return}
  if(statuses.some(s=>!s.value)){toast('Lengkapi semua status YA/TIDAK PLB3 Tanggap Darurat.');return}
- const items=statuses.map((s,i)=>({no:plb3DaruratItems[i][0],ketentuan:plb3DaruratItems[i][2],section:plb3DaruratItems[i][1],status:s.value,documentation:'',keterangan:$(`.darurat-note[data-i="${i}"]`).value.trim()}));
+ const items=statuses.map((s,i)=>({no:plb3DaruratItems[i][0],ketentuan:plb3DaruratItems[i][2],section:plb3DaruratItems[i][1],status:s.value,documentation:'',keterangan:(document.querySelector(`.darurat-note[data-i="${i}"]`)?.value ?? '').trim()}));
  syncManualFindingContext('darurat');
   try{const d=await postJSON(isEditingModule('PLB3 Tanggap Darurat')?{action:'updateAssessment',module:'PLB3 Tanggap Darurat',submissionId:window.editingAssessment.submissionId,assessor,site,assessmentDate:date,businessUnit:businessUnit,auditor:assessor,auditee:auditee,items:items.concat(getManualFindingItems('darurat'))}:{action:'savePLB3Darurat',assessor,site,assessmentDate:date,businessUnit:businessUnit,auditor:assessor,auditee:auditee,items:items.concat(getManualFindingItems('darurat'))});
    if(d.status==='success'||d.status==='partial'){
@@ -4794,7 +4794,7 @@ async function submitB3(){
  const items=[];
  b3Sections.forEach((sec,si)=>[...document.querySelectorAll(`.b3-status[data-s="${si}"]`)].forEach((s,i)=>{
    if(!s.value)return;
-   items.push({section:sec[0],no:sec[1][i][0],ketentuan:sec[1][i][1],status:s.value,keterangan:$(`.b3-note[data-s="${si}"][data-i="${i}"]`).value.trim()});
+   items.push({section:sec[0],no:sec[1][i][0],ketentuan:sec[1][i][1],status:s.value,keterangan:(document.querySelector(`.b3-note[data-s="${si}"][data-i="${i}"]`)?.value ?? '').trim()});
  }));
  if(items.length<30){toast('Lengkapi semua 30 status YA/TIDAK pada B3 + PCBs.');return}
  syncManualFindingContext('b3');
@@ -4931,7 +4931,7 @@ async function submitSampah(){
     section:sampahItems[i][1],
     ketentuan:sampahItems[i][2],
     status:s.value,
-    keterangan:$(`.sampah-note[data-i="${i}"]`).value.trim()
+    keterangan:(document.querySelector(`.sampah-note[data-i="${i}"]`)?.value ?? '').trim()
   }));
   syncManualFindingContext('sampah');
   try{
