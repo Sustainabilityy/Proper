@@ -20,6 +20,9 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+<!-- D3.js Data Visualization Library -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
@@ -284,6 +287,357 @@ tbody tr:hover{background:var(--brand-50)}
 .btn-download-format.word-btn:hover{background:#2563eb;color:#fff;border-color:#2563eb}
 .export-bundle-btn{width:100%;background:linear-gradient(135deg,#0a7c58 0%,#12a579 100%);color:#fff;border:0;border-radius:11px;padding:12px 18px;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 6px 18px rgba(10,124,88,.22);transition:transform .14s ease,box-shadow .14s ease}
 .export-bundle-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(10,124,88,.3)}
+
+/* ---------- MONTHLY COMPLIANCE OVERVIEW CARD (D3.JS) ---------- */
+.monthly-compliance-card{
+  background:linear-gradient(135deg,rgba(255,255,255,0.98),rgba(244,250,247,0.98));
+  border:1px solid rgba(18,165,121,0.22);
+  border-radius:18px;
+  padding:24px;
+  margin-bottom:22px;
+  box-shadow:0 10px 28px rgba(6,35,26,0.06);
+  position:relative;
+  overflow:hidden;
+}
+.monthly-compliance-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,#063c2b,#0b7a56,#12a579,#34c89a);
+}
+.monthly-overview-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.monthly-overview-title-group{
+  flex:1;
+  min-width:280px;
+}
+.monthly-overview-kicker{
+  display:inline-block;
+  font-size:9.5px;
+  font-weight:800;
+  letter-spacing:.12em;
+  color:var(--brand-600);
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.monthly-overview-title{
+  font-family:var(--font-display);
+  font-size:18px;
+  font-weight:700;
+  color:var(--brand-900);
+  margin:0 0 3px;
+}
+.monthly-overview-sub{
+  margin:0;
+  font-size:11.5px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.monthly-overview-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.d3-control-group{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11.5px;
+  color:var(--muted);
+}
+.d3-control-group select{
+  padding:7px 10px;
+  font-size:11.5px;
+  border-radius:8px;
+  border:1px solid #d0dfd7;
+  background:#fff;
+  font-weight:600;
+  color:var(--ink);
+}
+.d3-view-switch{
+  display:inline-flex;
+  background:#eef4f0;
+  border:1px solid #dce8e1;
+  border-radius:8px;
+  padding:2px;
+}
+.d3-view-switch button{
+  border:0;
+  background:transparent;
+  padding:5px 10px;
+  font-size:10.5px;
+  font-weight:700;
+  color:var(--muted);
+  border-radius:6px;
+  cursor:pointer;
+  transition:.15s ease;
+}
+.d3-view-switch button.active{
+  background:#fff;
+  color:var(--brand-800);
+  box-shadow:0 1px 3px rgba(0,0,0,.08);
+}
+.monthly-overview-kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+@media(max-width:768px){
+  .monthly-overview-kpis{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+.monthly-kpi-item{
+  background:#fff;
+  border:1px solid #e1ebe5;
+  border-radius:12px;
+  padding:12px 14px;
+  box-shadow:0 2px 6px rgba(0,0,0,.02);
+}
+.monthly-kpi-item span{
+  display:block;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.06em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.monthly-kpi-item strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.1;
+  margin-bottom:3px;
+  font-variant-numeric:tabular-nums;
+}
+.monthly-kpi-item small{
+  font-size:10px;
+  color:var(--muted);
+}
+.d3-delta-pill{
+  display:inline-block;
+  font-size:13px!important;
+  font-weight:800;
+  padding:2px 8px;
+  border-radius:6px;
+  width:fit-content;
+}
+.d3-delta-pill.pos{
+  background:#dcfce7;
+  color:#166534;
+}
+.d3-delta-pill.neg{
+  background:#fee2e2;
+  color:#991b1b;
+}
+.monthly-chart-stage-wrap{
+  position:relative;
+  width:100%;
+  min-height:240px;
+  background:#ffffff;
+  border:1px solid #e5ede8;
+  border-radius:14px;
+  padding:14px 10px;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.02);
+  margin-bottom:14px;
+}
+.d3-monthly-chart-wrap{
+  width:100%;
+  height:100%;
+}
+.d3-monthly-tooltip{
+  position:absolute;
+  pointer-events:none;
+  opacity:0;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(18,165,121,0.3);
+  border-radius:12px;
+  box-shadow:0 12px 28px rgba(6,35,26,0.14);
+  padding:12px 14px;
+  min-width:210px;
+  z-index:40;
+  transition:opacity .15s ease,transform .15s ease;
+  transform:translateY(4px);
+}
+.d3-monthly-tooltip.show{
+  opacity:1;
+  transform:none;
+}
+.d3-tip-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:8px;
+  padding-bottom:6px;
+  border-bottom:1px solid rgba(10,45,33,.08);
+}
+.d3-tip-head strong{
+  font-size:12px;
+  color:var(--brand-900);
+}
+.d3-tip-badge{
+  font-size:8px;
+  font-weight:800;
+  padding:2px 6px;
+  border-radius:4px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.d3-tip-main{
+  margin-bottom:8px;
+}
+.d3-tip-score-label{
+  font-size:9.5px;
+  color:var(--muted);
+  display:block;
+}
+.d3-tip-score{
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:800;
+  color:var(--brand-700);
+  line-height:1.1;
+  font-variant-numeric:tabular-nums;
+}
+.d3-tip-breakdown small{
+  display:block;
+  font-size:9px;
+  color:var(--muted);
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.d3-tip-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:10.5px;
+  padding:2px 0;
+  color:var(--ink-soft);
+}
+.d3-tip-row b{
+  color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.monthly-overview-footer{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font-size:11px;
+}
+.monthly-overview-legend-zone{
+  width:100%;
+}
+.d3-comparison-legend-bar{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.d3-comparison-legend-bar small{
+  font-size:10px;
+  font-weight:800;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.d3-bu-chips-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.d3-bu-chip{
+  background:#fff;
+  border:1px solid #d1d5db;
+  border-radius:20px;
+  padding:5px 12px;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  transition:all .15s ease;
+  color:var(--ink);
+}
+.d3-bu-chip:hover{
+  transform:translateY(-1px);
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+.d3-bu-chip.active{
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  font-weight:700;
+}
+.d3-chip-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  display:inline-block;
+}
+.d3-tip-row.highlight{
+  background:rgba(18,165,121,.10);
+  border-radius:4px;
+  padding:2px 4px;
+}
+.d3-tip-row span i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:5px;
+}
+.monthly-legend{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.legend-item{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+  color:#374151;
+}
+.legend-line-actual{
+  width:16px;
+  height:3px;
+  background:#0a7c58;
+  border-radius:2px;
+  display:inline-block;
+}
+.legend-line-target{
+  width:16px;
+  height:2px;
+  border-top:2px dashed #d97706;
+  display:inline-block;
+}
+.monthly-insight-note{
+  background:rgba(255,255,255,0.7);
+  border:1px dashed #c9ded3;
+  padding:8px 12px;
+  border-radius:8px;
+  color:#475b52;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  line-height:1.45;
+  width:100%;
+}
 
 /* ---------- ML Trend Prediction & Interactive Map Styles ---------- */
 .ml-trend-card{
@@ -2329,6 +2683,92 @@ body{background:#f3f6f4!important}
     <div id="properComplianceMap" class="proper-map-container"></div>
   </div>
 
+  <!-- Monthly Compliance Overview Card (D3.js Powered) -->
+  <div class="monthly-compliance-card" id="monthlyComplianceCard">
+    <div class="monthly-overview-head">
+      <div class="monthly-overview-title-group">
+        <span class="monthly-overview-kicker">ANALISIS TEMPORAL PROPER · D3.JS ENGINE</span>
+        <h3 class="monthly-overview-title">Monthly Compliance Overview</h3>
+        <p class="monthly-overview-sub">Rata-rata persentase kepatuhan bulanan terhadap ketentuan teknis lingkungan hidup seluruh Business Unit.</p>
+      </div>
+
+      <div class="monthly-overview-actions">
+        <div class="d3-control-group">
+          <label>Unit Usaha:</label>
+          <select id="d3BuSelect" onchange="window.ProperMonthlyChart.setBusinessUnit(this.value)">
+            <option value="all">Semua Business Unit (Rata-rata Gabungan)</option>
+            <option value="GGP">PT GGP (Great Giant Pineapple)</option>
+            <option value="UJA">PT UJA (Umas Jaya Agrotama)</option>
+            <option value="GGL">PT GGL (Great Giant Livestock)</option>
+            <option value="PG4">PG4 (Plantation Group 4)</option>
+          </select>
+        </div>
+
+        <div class="d3-control-group">
+          <label>Tahun:</label>
+          <select id="d3YearSelect" onchange="window.ProperMonthlyChart.setYear(this.value)">
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+
+        <div class="d3-view-switch">
+          <button type="button" class="active" data-mode="aggregated" onclick="window.ProperMonthlyChart.setViewMode('aggregated')">📈 Rata-rata Gabungan</button>
+          <button type="button" data-mode="comparison" onclick="window.ProperMonthlyChart.setViewMode('comparison')">📊 Komparasi Lintas Unit</button>
+          <button type="button" data-mode="bar" onclick="window.ProperMonthlyChart.setViewMode('bar')">▦ Kolom Bar</button>
+        </div>
+
+        <div class="export-btn-group" style="margin-left:4px">
+          <button type="button" class="btn-export pdf-btn" onclick="window.ProperMonthlyChart.exportPdf()" title="Ekspor PDF Ringkasan Kepatuhan Bulanan">
+            <span>📄</span> PDF
+          </button>
+          <button type="button" class="btn-export excel-btn" onclick="window.ProperMonthlyChart.exportExcel()" title="Ekspor Excel Ringkasan Kepatuhan Bulanan">
+            <span>📊</span> Excel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top KPI Highlights -->
+    <div class="monthly-overview-kpis">
+      <div class="monthly-kpi-item">
+        <span>RATA-RATA TAHUNAN</span>
+        <strong id="d3MetricAvg">91.8%</strong>
+        <small>Baseline Kepatuhan</small>
+      </div>
+      <div class="monthly-kpi-item">
+        <span>BULAN TERTINGGI</span>
+        <strong id="d3MetricHigh">Okt (95.4%)</strong>
+        <small>Puncak Penaatan</small>
+      </div>
+      <div class="monthly-kpi-item">
+        <span>MOMENTUM MOM</span>
+        <strong id="d3MetricDelta" class="d3-delta-pill pos">▲ +2.6% MoM</strong>
+        <small>Pertumbuhan Trend</small>
+      </div>
+      <div class="monthly-kpi-item">
+        <span>STATUS AMBANG BATAS</span>
+        <strong id="d3MetricStatus" style="color:#059669">TAAT TINGGI (HIJAU)</strong>
+        <small>Target KLHK: ≥90%</small>
+      </div>
+    </div>
+
+    <!-- D3 Chart Wrapper & Tooltip -->
+    <div class="monthly-chart-stage-wrap">
+      <div id="d3MonthlyChartContainer" class="d3-monthly-chart-wrap"></div>
+      <div id="d3MonthlyTooltip" class="d3-monthly-tooltip"></div>
+    </div>
+
+    <!-- Bottom Legend & Environmental Insight -->
+    <div class="monthly-overview-footer">
+      <div id="d3MonthlyLegend" class="monthly-overview-legend-zone"></div>
+      <div class="monthly-insight-note">
+        <span>💡</span>
+        <span><b>Analisis Tren:</b> Kepatuhan teknis menunjukkan konsistensi di atas ambang batas 90%. Performa optimal pada pengelolaan IPAL dan pemantauan emisi cerobong berkontribusi menjaga status PROPER dalam kategori Hijau.</span>
+      </div>
+    </div>
+  </div>
+
   <div class="portal-analytics-grid dashboard-modern-grid">
     <div class="portal-panel portal-wide chart-main-card">
       <div class="portal-panel-head chart-head">
@@ -2948,6 +3388,8 @@ body{background:#f3f6f4!important}
 <script src="./proper-report-offline.js"></script>
 <!-- PROPER Machine Learning Forecast & Interactive Map Engine -->
 <script src="./proper-ml-map.js"></script>
+<!-- PROPER D3.js Monthly Compliance Analytics Engine -->
+<script src="./proper-d3-monthly.js"></script>
 <script>
 /* GANTI URL INI dengan URL Web App Google Apps Script Anda */
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbx9txR_oIZ9fJusEYRtGcqlGBDI9uoAVYpFa03Pwp2cVLJuyTm_-F5FbbrmsFstsLVz/exec';
@@ -8530,6 +8972,9 @@ function applyExecutiveFilters(){
   if(window.ProperMapEngine && typeof window.ProperMapEngine.refreshMLAndMap === 'function'){
     window.ProperMapEngine.refreshMLAndMap(out);
   }
+  if(window.ProperMonthlyChart && typeof window.ProperMonthlyChart.refresh === 'function'){
+    window.ProperMonthlyChart.refresh(out);
+  }
 }
 function resetExecutiveFilters(){
   if($('execFilterBusinessUnit'))$('execFilterBusinessUnit').value='';
@@ -8996,6 +9441,9 @@ async function loadExecutiveAnalyticsV2(force=false){
   renderExecutive(map); renderDashboardV2(map);
   if(window.ProperMapEngine && typeof window.ProperMapEngine.refreshMLAndMap === 'function'){
     window.ProperMapEngine.refreshMLAndMap(map);
+  }
+  if(window.ProperMonthlyChart && typeof window.ProperMonthlyChart.refresh === 'function'){
+    window.ProperMonthlyChart.refresh(map);
   }
   if($('execSync'))$('execSync').textContent='Synced '+new Date().toLocaleTimeString('id-ID');
 }
