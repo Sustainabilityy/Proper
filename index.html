@@ -288,6 +288,222 @@ tbody tr:hover{background:var(--brand-50)}
 .export-bundle-btn{width:100%;background:linear-gradient(135deg,#0a7c58 0%,#12a579 100%);color:#fff;border:0;border-radius:11px;padding:12px 18px;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 6px 18px rgba(10,124,88,.22);transition:transform .14s ease,box-shadow .14s ease}
 .export-bundle-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(10,124,88,.3)}
 
+/* ---------- RISK HEATMAP STYLES ---------- */
+.risk-heatmap-panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  padding:22px;
+  margin-bottom:18px;
+}
+.risk-heatmap-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:18px;
+}
+.risk-heatmap-kicker{
+  display:inline-block;
+  font-size:9.5px;
+  font-weight:800;
+  letter-spacing:.12em;
+  color:var(--brand-600);
+  text-transform:uppercase;
+  margin-bottom:3px;
+}
+.risk-heatmap-title{
+  font-family:var(--font-display);
+  font-size:17px;
+  font-weight:700;
+  color:var(--brand-900);
+  margin:0 0 4px;
+}
+.risk-heatmap-sub{
+  margin:0;
+  font-size:11.5px;
+  color:var(--muted);
+  max-width:720px;
+}
+.risk-heatmap-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.heatmap-control-group{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.heatmap-control-group label{
+  font-size:10px;
+  font-weight:800;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.heatmap-control-group select{
+  padding:6px 10px;
+  font-size:11.5px;
+  border-radius:8px;
+}
+.heatmap-view-switch{
+  display:inline-flex;
+  background:#f1f5f3;
+  padding:3px;
+  border-radius:9px;
+  gap:2px;
+}
+.heatmap-view-switch button{
+  border:0;
+  background:transparent;
+  padding:5px 10px;
+  font-size:11px;
+  font-weight:700;
+  border-radius:7px;
+  color:var(--muted);
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.heatmap-view-switch button.active{
+  background:#fff;
+  color:var(--brand-800);
+  box-shadow:0 1px 3px rgba(0,0,0,.08);
+}
+.risk-heatmap-kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+@media(max-width:800px){
+  .risk-heatmap-kpis{grid-template-columns:repeat(2,1fr);}
+}
+.risk-kpi-card{
+  padding:14px;
+  border-radius:12px;
+  cursor:pointer;
+  border:1px solid var(--line);
+  transition:transform .15s ease,box-shadow .15s ease;
+  position:relative;
+  overflow:hidden;
+}
+.risk-kpi-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+}
+.risk-kpi-card.critical{background:#fff5f5;border-color:#fecaca;}
+.risk-kpi-card.high{background:#fffbeb;border-color:#fde68a;}
+.risk-kpi-card.medium{background:#fefce8;border-color:#fef08a;}
+.risk-kpi-card.low{background:#f0fdf4;border-color:#bbf7d0;}
+.risk-kpi-badge{
+  display:inline-block;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:2px 8px;
+  border-radius:999px;
+  margin-bottom:6px;
+}
+.risk-kpi-card.critical .risk-kpi-badge{background:#fee2e2;color:#991b1b;}
+.risk-kpi-card.high .risk-kpi-badge{background:#ffedd5;color:#9a3412;}
+.risk-kpi-card.medium .risk-kpi-badge{background:#fef9c3;color:#854d0e;}
+.risk-kpi-card.low .risk-kpi-badge{background:#dcfce7;color:#166534;}
+.risk-kpi-card strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:24px;
+  line-height:1.1;
+  margin-bottom:4px;
+}
+.risk-kpi-card.critical strong{color:#b91c1c;}
+.risk-kpi-card.high strong{color:#d97706;}
+.risk-kpi-card.medium strong{color:#ca8a04;}
+.risk-kpi-card.low strong{color:#059669;}
+.risk-kpi-card span{
+  font-size:10.5px;
+  color:var(--muted);
+  font-weight:600;
+}
+.heatmap-matrix-wrap{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin-bottom:14px;
+}
+.heatmap-matrix-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:760px;
+}
+.heatmap-matrix-table th, .heatmap-matrix-table td{
+  padding:10px 12px;
+  border:1px solid var(--line-soft);
+  text-align:center;
+}
+.heatmap-matrix-table th{
+  background:#f8faf9;
+  font-size:10px;
+  font-weight:800;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.heatmap-cell{
+  cursor:pointer;
+  border-radius:8px;
+  padding:8px 6px;
+  transition:all .15s ease;
+  position:relative;
+}
+.heatmap-cell:hover{
+  transform:scale(1.04);
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  z-index:2;
+}
+.heatmap-cell.critical{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5;}
+.heatmap-cell.high{background:#ffedd5;color:#9a3412;border:1px solid #fed7aa;}
+.heatmap-cell.medium{background:#fef9c3;color:#854d0e;border:1px solid #fef08a;}
+.heatmap-cell.low{background:#dcfce7;color:#166534;border:1px solid #bbf7d0;}
+.heatmap-cell strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:14px;
+  font-weight:700;
+}
+.heatmap-cell small{
+  display:block;
+  font-size:9px;
+  font-weight:600;
+  opacity:.85;
+}
+.remediation-list-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+  gap:12px;
+}
+.remediation-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.remediation-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+}
+.remediation-card.critical{border-left:4px solid #dc2626;}
+.remediation-card.high{border-left:4px solid #ea580c;}
+.remediation-card.medium{border-left:4px solid #ca8a04;}
+.remediation-card.low{border-left:4px solid #16a34a;}
+
 /* ---------- MONTHLY COMPLIANCE OVERVIEW CARD (D3.JS) ---------- */
 .monthly-compliance-card{
   background:linear-gradient(135deg,rgba(255,255,255,0.98),rgba(244,250,247,0.98));
@@ -3050,6 +3266,72 @@ body{background:#f3f6f4!important}
   </div>
 
   <div class="exec-kpis dash-kpis" id="execKpis"></div>
+
+  <!-- Risk Heatmap: Compliance Performance by Business Unit & Location -->
+  <div class="portal-panel risk-heatmap-panel" id="riskHeatmapWidget">
+    <div class="risk-heatmap-head">
+      <div class="risk-heatmap-title-wrap">
+        <span class="risk-heatmap-kicker">HEATMAP RISIKO KEPATUHAN · REMEDIATION RADAR</span>
+        <h3 class="risk-heatmap-title">Risk Heatmap: Kinerja Kepatuhan per Unit &amp; Lokasi</h3>
+        <p class="risk-heatmap-sub">Visualisasi matriks risiko kepatuhan ketentuan teknis untuk mengidentifikasi fasilitas berisiko tinggi dan menentukan prioritas tindakan remediasi segera.</p>
+      </div>
+      <div class="risk-heatmap-controls">
+        <div class="heatmap-control-group">
+          <label>Unit Usaha:</label>
+          <select id="heatmapBuFilter" onchange="renderRiskHeatmap()">
+            <option value="all">Semua Business Unit</option>
+            <option value="PT GGP">PT GGP</option>
+            <option value="PT UJA">PT UJA</option>
+            <option value="PT GGL">PT GGL</option>
+            <option value="PG4">PG4</option>
+          </select>
+        </div>
+        <div class="heatmap-control-group">
+          <label>Tingkat Risiko:</label>
+          <select id="heatmapRiskFilter" onchange="renderRiskHeatmap()">
+            <option value="all">Semua Tingkat Risiko</option>
+            <option value="critical">🚨 Kritis (&lt;70% - Remediasi Segera)</option>
+            <option value="high">⚠️ Tinggi (70-79% - Perhatian Khusus)</option>
+            <option value="medium">🟡 Sedang (80-89% - Cukup)</option>
+            <option value="low">🟢 Aman (≥90% - Sangat Taat)</option>
+          </select>
+        </div>
+        <div class="heatmap-view-switch">
+          <button type="button" class="active" id="btnHeatmapMatrix" onclick="setHeatmapView('matrix')">▦ Matriks Unit × Aspek</button>
+          <button type="button" id="btnHeatmapLocations" onclick="setHeatmapView('locations')">📍 Prioritas Remediasi Lokasi</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk KPI Badges / Risk Counters -->
+    <div class="risk-heatmap-kpis">
+      <div class="risk-kpi-card critical" onclick="filterHeatmapByLevel('critical')" title="Klik untuk memfilter fasilitas kritis">
+        <span class="risk-kpi-badge">KRITIS &lt;70%</span>
+        <strong id="riskCountCritical">0</strong>
+        <span>Fasilitas Perlu Remediasi Segera</span>
+      </div>
+      <div class="risk-kpi-card high" onclick="filterHeatmapByLevel('high')" title="Klik untuk memfilter fasilitas risiko tinggi">
+        <span class="risk-kpi-badge">TINGGI 70-79%</span>
+        <strong id="riskCountHigh">0</strong>
+        <span>Perlu Perhatian &amp; Monitoring</span>
+      </div>
+      <div class="risk-kpi-card medium" onclick="filterHeatmapByLevel('medium')" title="Klik untuk memfilter fasilitas risiko sedang">
+        <span class="risk-kpi-badge">SEDANG 80-89%</span>
+        <strong id="riskCountMedium">0</strong>
+        <span>Memenuhi Ambang Batas Minimal</span>
+      </div>
+      <div class="risk-kpi-card low" onclick="filterHeatmapByLevel('low')" title="Klik untuk memfilter fasilitas aman">
+        <span class="risk-kpi-badge">AMAN ≥90%</span>
+        <strong id="riskCountLow">0</strong>
+        <span>Target Kategori Hijau / Emas</span>
+      </div>
+    </div>
+
+    <!-- Heatmap Stage Container -->
+    <div id="riskHeatmapStage" class="risk-heatmap-stage">
+      <!-- Populated dynamically by renderRiskHeatmap() -->
+    </div>
+  </div>
 
   <!-- Machine Learning Trend Forecast Widget Container -->
   <div id="mlForecastContainer"></div>
@@ -9375,7 +9657,7 @@ function renderDashboardV2(dataMap){
   const recent=all.slice().sort((a,b)=>String(b.timestamp||b.assessmentDate).localeCompare(String(a.timestamp||a.assessmentDate))).slice(0,5);
   if($('dashActivity'))$('dashActivity').innerHTML=recent.length?recent.map(r=>`<div class="activity-item"><div class="activity-icon">✓</div><div><b>${escapeHtml(siteOf(r))}</b><small>${escapeHtml(r.assessor||'PIC')} · ${escapeHtml(r.timestamp||r.assessmentDate||'-')}</small></div><span class="activity-ok">${scoreOf(r)}%</span></div>`).join(''):'<div class="module-empty">Belum ada aktivitas.</div>';
   const recentAll=Object.keys(dataMap).flatMap(key=>(dataMap[key]||[]).map(r=>({...r,_module:moduleMeta[key].label}))).sort((a,b)=>String(b.timestamp||b.assessmentDate||'').localeCompare(String(a.timestamp||a.assessmentDate||''))).slice(0,8);
-  if($('dashRecentAllTable'))$('dashRecentAllTable').querySelector('tbody').innerHTML=recentAll.length?recentAll.map(r=>`<tr class="clickable-card" onclick="openExecutiveDetail('location','${escapeHtml(normalizeSite(siteOf(r)))}')"><td><b>${escapeHtml(r._module)}</b></td><td>${escapeHtml(siteOf(r))}</td><td>${escapeHtml(r.assessor||'PIC')}</td><td>${escapeHtml(r.assessmentDate||r.timestamp||'-')}</td><td><b>${scoreOf(r)}%</b></td><td>${statusBadge(scoreOf(r))}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;padding:22px">Belum ada data.</td></tr>';
+  if($('dashRecentAllTable'))$('dashRecentAllTable').querySelector('tbody').innerHTML=recentAll.length?recentAll.map(r=>`<tr class="clickable-card" onclick="openExecutiveDetail('location','${escapeHtml(normalizeSite(siteOf(r)))}')"><td><b>${escapeHtml(r._module)}</b></td><td><span class="badge neutral" style="font-size:9.5px;padding:2px 7px;">${escapeHtml(r.businessUnit||'PT GGP')}</span></td><td>${escapeHtml(siteOf(r))}</td><td>${escapeHtml(r.assessor||'PIC')}</td><td>${escapeHtml(r.assessmentDate||r.timestamp||'-')}</td><td><b>${scoreOf(r)}%</b></td><td>${statusBadge(scoreOf(r))}</td></tr>`).join(''):'<tr><td colspan="7" style="text-align:center;padding:22px">Belum ada data.</td></tr>';
   const risks=all.filter(r=>scoreOf(r)<70).sort((a,b)=>scoreOf(a)-scoreOf(b)).slice(0,3);
   if($('dashReminders'))$('dashReminders').innerHTML=risks.length?risks.map(r=>`<div class="reminder"><div class="reminder-icon">!</div><div><b>Perlu tindak lanjut — ${escapeHtml(siteOf(r))}</b><small>${scoreOf(r)}% · ${escapeHtml(r.assessor||'PIC')}</small></div></div>`).join(''):`<div class="reminder"><div class="reminder-icon">✓</div><div><b>Tidak ada risiko kritis</b><small>Semua assessment berada pada kondisi terpantau.</small></div></div>`;
   renderFollowupChart(all);
@@ -9434,6 +9716,9 @@ function applyExecutiveFilters(){
     out[key]=(rows||[]).filter(r=>{const d=dateOf(r);return (!bu||String(r.businessUnit||'')===bu)&&(!bu||String(r.businessUnit||'')===bu)&&(!sk||normalizeSite(siteOf(r))===sk)&&(!yr||String(d?.getFullYear()||'')===String(yr))&&(!mo||String((d?.getMonth()??-1)+1)===String(mo));});
   });
   executiveFilteredMap=out;renderExecutive(out);renderDashboardV2(out);renderBusinessUnitMonthlyTrend(out);
+  if(typeof renderRiskHeatmap === 'function'){
+    renderRiskHeatmap(out);
+  }
   if(window.ProperMapEngine && typeof window.ProperMapEngine.refreshMLAndMap === 'function'){
     window.ProperMapEngine.refreshMLAndMap(out);
   }
@@ -9897,13 +10182,301 @@ async function openAssessmentChecklist(row){
   }catch(e){$('assessmentChecklistRows').innerHTML=`<tr><td colspan="5" style="text-align:center;padding:35px;color:#b42318">Gagal membaca detail checklist: ${escapeHtml(e.message||String(e))}</td></tr>`;}
 }
 
+let currentHeatmapView = 'matrix'; // 'matrix' | 'locations'
+let currentHeatmapLevelFilter = 'all'; // 'all' | 'critical' | 'high' | 'medium' | 'low'
+
+function setHeatmapView(view) {
+  currentHeatmapView = view;
+  const btnM = $('btnHeatmapMatrix');
+  const btnL = $('btnHeatmapLocations');
+  if (btnM) btnM.classList.toggle('active', view === 'matrix');
+  if (btnL) btnL.classList.toggle('active', view === 'locations');
+  renderRiskHeatmap();
+}
+
+function filterHeatmapByLevel(lvl) {
+  currentHeatmapLevelFilter = lvl;
+  const sel = $('heatmapRiskFilter');
+  if (sel) sel.value = lvl;
+  renderRiskHeatmap();
+}
+
+function ensureBaselineComplianceData(map) {
+  const hasData = Object.values(map).some(arr => Array.isArray(arr) && arr.length > 0);
+  if (hasData) return;
+
+  // Rich baseline compliance dataset for prompt demo & offline monitoring
+  map.ppa = [
+    { businessUnit: 'PT GGP', site: 'IPAL Terpadu Central PT GGP', assessor: 'Ahmad Fauzi, S.T.', auditee: 'Budi Santoso', assessmentDate: '2026-09-18', percentage: 92, yes: 11, no: 1, total: 12, moduleKey: 'ppa' },
+    { businessUnit: 'PT UJA', site: 'Kolam Anaerobik Tapioka Menggala', assessor: 'Dian Prasetyo', auditee: 'Hendri Kurnia', assessmentDate: '2026-09-16', percentage: 67, yes: 8, no: 4, total: 12, moduleKey: 'ppa', remediation: 'Perlu pengurasan sedimentasi lumpur kolam anaerobik dan perbaikan debit meter.' },
+    { businessUnit: 'PT GGL', site: 'Lagoon Biogas & IPAL Sapi Terpadu', assessor: 'Dr. Agus Wibowo', auditee: 'Samsul Arifin', assessmentDate: '2026-09-15', percentage: 92, yes: 11, no: 1, total: 12, moduleKey: 'ppa' },
+    { businessUnit: 'PG4', site: 'Settling Pond Drainase Perkebunan PG4', assessor: 'Rudi Hartono', auditee: 'Wahyu Hidayat', assessmentDate: '2026-09-12', percentage: 83, yes: 10, no: 2, total: 12, moduleKey: 'ppa' }
+  ];
+
+  map.emisi = [
+    { businessUnit: 'PT GGP', site: 'Cerobong Boiler Utama Biomassa 01', assessor: 'Irwan Setiawan', auditee: 'Joko Widodo', assessmentDate: '2026-09-17', percentage: 100, yes: 6, no: 0, total: 6, moduleKey: 'emisi' },
+    { businessUnit: 'PT UJA', site: 'Cerobong Flash Dryer Pabrik Tapioka', assessor: 'Dian Prasetyo', auditee: 'Hendri Kurnia', assessmentDate: '2026-09-16', percentage: 67, yes: 4, no: 2, total: 6, moduleKey: 'emisi', remediation: 'Perlu modifikasi lubang sampling emisi isokinetik dan kalibrasi sensor opacity.' },
+    { businessUnit: 'PT GGL', site: 'Genset Pembangkit Listrik Biogas 500kVA', assessor: 'Dr. Agus Wibowo', auditee: 'Samsul Arifin', assessmentDate: '2026-09-14', percentage: 83, yes: 5, no: 1, total: 6, moduleKey: 'emisi' },
+    { businessUnit: 'PG4', site: 'Workshop Kendaraan & Genset PG4', assessor: 'Rudi Hartono', auditee: 'Wahyu Hidayat', assessmentDate: '2026-09-11', percentage: 83, yes: 5, no: 1, total: 6, moduleKey: 'emisi' }
+  ];
+
+  map.plb3 = [
+    { businessUnit: 'PT GGP', site: 'TPS Limbah B3 Sentral PT GGP', assessor: 'Ahmad Fauzi, S.T.', auditee: 'Budi Santoso', assessmentDate: '2026-09-18', percentage: 97, yes: 29, no: 1, total: 30, moduleKey: 'plb3' },
+    { businessUnit: 'PT UJA', site: 'TPS Limbah B3 UJA Menggala', assessor: 'Dian Prasetyo', auditee: 'Hendri Kurnia', assessmentDate: '2026-09-15', percentage: 63, yes: 19, no: 11, total: 30, moduleKey: 'plb3', remediation: 'SOP tanggap darurat, simbol label limbah B3, dan eyewash shower perlu diperbaiki segera.' },
+    { businessUnit: 'PT GGL', site: 'TPS Oli Bekas & Limbah Medis Hewan GGL', assessor: 'Dr. Agus Wibowo', auditee: 'Samsul Arifin', assessmentDate: '2026-09-13', percentage: 87, yes: 26, no: 4, total: 30, moduleKey: 'plb3' },
+    { businessUnit: 'PG4', site: 'TPS Limbah B3 Workshop Perkebunan PG4', assessor: 'Rudi Hartono', auditee: 'Wahyu Hidayat', assessmentDate: '2026-09-10', percentage: 80, yes: 24, no: 6, total: 30, moduleKey: 'plb3' }
+  ];
+
+  map.plnonb3 = [
+    { businessUnit: 'PT GGP', site: 'Area Pemanfaatan Sludge Organik Nanas', assessor: 'Ahmad Fauzi, S.T.', auditee: 'Budi Santoso', assessmentDate: '2026-09-17', percentage: 95, yes: 19, no: 1, total: 20, moduleKey: 'plnonb3' },
+    { businessUnit: 'PT UJA', site: 'Penampungan Kulit Singkong & Ampas', assessor: 'Dian Prasetyo', auditee: 'Hendri Kurnia', assessmentDate: '2026-09-15', percentage: 75, yes: 15, no: 5, total: 20, moduleKey: 'plnonb3', remediation: 'Perbaiki drainase air larian dan tutup terpal penampungan ampas tapioka.' },
+    { businessUnit: 'PT GGL', site: 'Unit Komposting Feses Sapi Terpadu', assessor: 'Dr. Agus Wibowo', auditee: 'Samsul Arifin', assessmentDate: '2026-09-14', percentage: 90, yes: 18, no: 2, total: 20, moduleKey: 'plnonb3' },
+    { businessUnit: 'PG4', site: 'Pemanfaatan Biomassa Serasah Nanas & Tebu', assessor: 'Rudi Hartono', auditee: 'Wahyu Hidayat', assessmentDate: '2026-09-11', percentage: 85, yes: 17, no: 3, total: 20, moduleKey: 'plnonb3' }
+  ];
+
+  map.b3 = [
+    { businessUnit: 'PT GGP', site: 'Gudang Bahan Kimia & Reagen Koagulan', assessor: 'Ahmad Fauzi, S.T.', auditee: 'Budi Santoso', assessmentDate: '2026-09-18', percentage: 93, yes: 28, no: 2, total: 30, moduleKey: 'b3' },
+    { businessUnit: 'PT UJA', site: 'Penyimpanan Bahan Kimia Laboratorium UJA', assessor: 'Dian Prasetyo', auditee: 'Hendri Kurnia', assessmentDate: '2026-09-15', percentage: 73, yes: 22, no: 8, total: 30, moduleKey: 'b3', remediation: 'Lengkapi MSDS lembar keselamatan di setiap rak dan perbarui sertifikasi petugas B3.' },
+    { businessUnit: 'PT GGL', site: 'Gudang Disinfektan & Sanitasi Kandang', assessor: 'Dr. Agus Wibowo', auditee: 'Samsul Arifin', assessmentDate: '2026-09-13', percentage: 87, yes: 26, no: 4, total: 30, moduleKey: 'b3' },
+    { businessUnit: 'PG4', site: 'Gudang Agrokimia Perkebunan PG4', assessor: 'Rudi Hartono', auditee: 'Wahyu Hidayat', assessmentDate: '2026-09-09', percentage: 83, yes: 25, no: 5, total: 30, moduleKey: 'b3' }
+  ];
+
+  map.sampah = [
+    { businessUnit: 'PT GGP', site: 'Pusat Pemilahan Sampah Terpadu & 3R GGP', assessor: 'Ahmad Fauzi, S.T.', auditee: 'Budi Santoso', assessmentDate: '2026-09-17', percentage: 89, yes: 8, no: 1, total: 9, moduleKey: 'sampah' },
+    { businessUnit: 'PT UJA', site: 'Tempat Pembuangan Sementara UJA', assessor: 'Dian Prasetyo', auditee: 'Hendri Kurnia', assessmentDate: '2026-09-14', percentage: 67, yes: 6, no: 3, total: 9, moduleKey: 'sampah', remediation: 'Segera lakukan pemilahan sampah organik dan anorganik terpisah serta penjadwalan angkut rutin.' },
+    { businessUnit: 'PT GGL', site: 'Area Pemilahan Sampah Domestik Peternakan', assessor: 'Dr. Agus Wibowo', auditee: 'Samsul Arifin', assessmentDate: '2026-09-12', percentage: 89, yes: 8, no: 1, total: 9, moduleKey: 'sampah' },
+    { businessUnit: 'PG4', site: 'Pengelolaan Sampah Perumahan Staf PG4', assessor: 'Rudi Hartono', auditee: 'Wahyu Hidayat', assessmentDate: '2026-09-08', percentage: 78, yes: 7, no: 2, total: 9, moduleKey: 'sampah' }
+  ];
+
+  // Merge any offline drafts saved by user
+  try {
+    const drafts = JSON.parse(localStorage.getItem('properOfflineDrafts') || '[]');
+    drafts.forEach(d => {
+      const mKey = d.module || 'ppa';
+      if (map[mKey]) {
+        map[mKey].unshift(d);
+      }
+    });
+  } catch (_) {}
+
+  // Populate executiveCache
+  Object.keys(map).forEach(k => {
+    executiveCache[k] = map[k];
+  });
+}
+
+function renderRiskHeatmap(customDataMap) {
+  const stage = $('riskHeatmapStage');
+  if (!stage) return;
+
+  const dataMap = customDataMap || (executiveFilteredMap && Object.keys(executiveFilteredMap).length ? executiveFilteredMap : executiveRawMap);
+  const buFilter = $('heatmapBuFilter')?.value || 'all';
+  const riskFilter = $('heatmapRiskFilter')?.value || currentHeatmapLevelFilter || 'all';
+
+  // Build list of location assessments
+  const allRows = [];
+  Object.entries(dataMap || {}).forEach(([modKey, rows]) => {
+    (rows || []).forEach(r => {
+      const score = scoreOf(r);
+      const bu = String(r.businessUnit || 'PT GGP').trim();
+      const site = siteOf(r);
+      let riskLevel = 'low';
+      let riskLabel = 'Aman (≥90%)';
+      if (score < 70) {
+        riskLevel = 'critical';
+        riskLabel = 'Kritis (<70%)';
+      } else if (score < 80) {
+        riskLevel = 'high';
+        riskLabel = 'Tinggi (70-79%)';
+      } else if (score < 90) {
+        riskLevel = 'medium';
+        riskLabel = 'Sedang (80-89%)';
+      }
+
+      allRows.push({
+        ...r,
+        moduleKey: modKey,
+        moduleLabel: moduleMeta[modKey]?.label || modKey.toUpperCase(),
+        score,
+        businessUnit: bu,
+        site,
+        riskLevel,
+        riskLabel,
+        remediation: r.remediation || (score < 70 ? 'Perlu tindakan remediasi segera dan audit investigasi mendalam.' : score < 80 ? 'Perlu perbaikan teknis fasilitas dan evaluasi kepatuhan SOP.' : score < 90 ? 'Lakukan pemeliharaan berkala dan monitoring rutin.' : 'Kondisi sangat baik, pertahankan standar operasional.')
+      });
+    });
+  });
+
+  // Count KPIs
+  const cCritical = allRows.filter(r => r.riskLevel === 'critical').length;
+  const cHigh = allRows.filter(r => r.riskLevel === 'high').length;
+  const cMedium = allRows.filter(r => r.riskLevel === 'medium').length;
+  const cLow = allRows.filter(r => r.riskLevel === 'low').length;
+
+  if ($('riskCountCritical')) $('riskCountCritical').textContent = cCritical;
+  if ($('riskCountHigh')) $('riskCountHigh').textContent = cHigh;
+  if ($('riskCountMedium')) $('riskCountMedium').textContent = cMedium;
+  if ($('riskCountLow')) $('riskCountLow').textContent = cLow;
+
+  // Filter rows
+  let filteredRows = allRows;
+  if (buFilter && buFilter !== 'all') {
+    filteredRows = filteredRows.filter(r => r.businessUnit === buFilter);
+  }
+  if (riskFilter && riskFilter !== 'all') {
+    filteredRows = filteredRows.filter(r => r.riskLevel === riskFilter);
+  }
+
+  if (currentHeatmapView === 'matrix') {
+    // 2D Matrix View: Business Units / Sites x Aspects
+    const units = buFilter !== 'all' ? [buFilter] : ['PT GGP', 'PT UJA', 'PT GGL', 'PG4'];
+    const aspects = [
+      { key: 'ppa', label: 'PPA' },
+      { key: 'emisi', label: 'PPU / Emisi' },
+      { key: 'plb3', label: 'PLB3' },
+      { key: 'plnonb3', label: 'PLnonB3' },
+      { key: 'b3', label: 'B3 & PCBs' },
+      { key: 'sampah', label: 'Sampah' }
+    ];
+
+    let matrixHtml = `
+      <div class="heatmap-matrix-wrap">
+        <table class="heatmap-matrix-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;min-width:180px;">Business Unit &amp; Fasilitas</th>
+              ${aspects.map(a => `<th style="min-width:90px;">${a.label}</th>`).join('')}
+              <th style="min-width:90px;">Rata-rata Unit</th>
+            </tr>
+          </thead>
+          <tbody>
+    `;
+
+    units.forEach(u => {
+      const uRows = allRows.filter(r => r.businessUnit === u);
+      const uScores = uRows.map(r => r.score);
+      const uAvg = uScores.length ? Math.round(uScores.reduce((a, b) => a + b, 0) / uScores.length) : 0;
+      let uAvgRisk = uAvg >= 90 ? 'low' : uAvg >= 80 ? 'medium' : uAvg >= 70 ? 'high' : 'critical';
+
+      matrixHtml += `
+        <tr style="background:#fcfdfd;">
+          <td style="text-align:left;font-weight:700;color:var(--brand-900);">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span class="badge neutral" style="font-size:9.5px;padding:2px 8px;">${u}</span>
+              <small style="color:var(--muted);font-weight:normal;">${uRows.length} assessment</small>
+            </div>
+          </td>
+      `;
+
+      aspects.forEach(a => {
+        const cellItems = uRows.filter(r => r.moduleKey === a.key);
+        if (cellItems.length) {
+          const cScore = Math.round(cellItems.reduce((sum, x) => sum + x.score, 0) / cellItems.length);
+          let cRisk = cScore >= 90 ? 'low' : cScore >= 80 ? 'medium' : cScore >= 70 ? 'high' : 'critical';
+          const nonCompliant = cellItems.reduce((acc, curr) => acc + (curr.no || 0), 0);
+
+          matrixHtml += `
+            <td>
+              <div class="heatmap-cell ${cRisk}" onclick="window.ProperApp.openExportModal({businessUnit:'${u}', module:'${a.key}', moduleLabel:'${a.label}', percentage:${cScore}})" title="${u} - ${a.label}: ${cScore}% (Klik untuk buat laporan)">
+                <strong>${cScore}%</strong>
+                <small>${cRisk === 'critical' ? '🚨 Kritis' : cRisk === 'high' ? '⚠️ Waspada' : cRisk === 'medium' ? '🟡 Cukup' : '🟢 Taat'}</small>
+                ${nonCompliant > 0 ? `<small style="color:#b91c1c;font-weight:800;font-size:8px;">${nonCompliant} TIDAK</small>` : ''}
+              </div>
+            </td>
+          `;
+        } else {
+          matrixHtml += `<td><span style="color:#94a3b8;font-size:11px;">—</span></td>`;
+        }
+      });
+
+      matrixHtml += `
+          <td>
+            <div class="heatmap-cell ${uAvgRisk}" style="cursor:default;">
+              <strong>${uAvg}%</strong>
+              <small>${uAvgRisk.toUpperCase()}</small>
+            </div>
+          </td>
+        </tr>
+      `;
+    });
+
+    matrixHtml += `
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);padding:4px 6px;">
+        <div><span>💡 Klik pada kotak cell heatmap untuk membuka detail inspeksi dan mengunduh laporan PDF resmi.</span></div>
+        <div style="display:flex;gap:12px;">
+          <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#fee2e2;border:1px solid #fca5a5;vertical-align:middle;"></i> Kritis (&lt;70%)</span>
+          <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#ffedd5;border:1px solid #fed7aa;vertical-align:middle;"></i> Tinggi (70-79%)</span>
+          <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#fef9c3;border:1px solid #fef08a;vertical-align:middle;"></i> Sedang (80-89%)</span>
+          <span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#dcfce7;border:1px solid #bbf7d0;vertical-align:middle;"></i> Aman (≥90%)</span>
+        </div>
+      </div>
+    `;
+
+    stage.innerHTML = matrixHtml;
+
+  } else {
+    // Locations Remediation Action List View
+    if (!filteredRows.length) {
+      stage.innerHTML = `<div style="text-align:center;padding:32px;color:var(--muted);">Tidak ada fasilitas yang sesuai dengan kriteria filter saat ini.</div>`;
+      return;
+    }
+
+    // Sort by risk (critical first)
+    const sorted = filteredRows.slice().sort((a, b) => a.score - b.score);
+
+    stage.innerHTML = `
+      <div class="remediation-list-grid">
+        ${sorted.map(item => `
+          <div class="remediation-card ${item.riskLevel}">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                <div>
+                  <span class="badge neutral" style="font-size:9.5px;padding:2px 7px;">${item.businessUnit}</span>
+                  <span style="font-size:10px;font-weight:800;color:var(--brand-600);margin-left:6px;">${item.moduleLabel}</span>
+                </div>
+                <div style="text-align:right;">
+                  <strong style="font-size:16px;font-family:var(--font-display);color:${item.riskLevel === 'critical' ? '#dc2626' : item.riskLevel === 'high' ? '#ea580c' : item.riskLevel === 'medium' ? '#ca8a04' : '#059669'};">${item.score}%</strong>
+                  <span class="risk-kpi-badge" style="display:block;margin-top:2px;">${item.riskLabel}</span>
+                </div>
+              </div>
+              <h4 style="margin:0 0 6px;font-size:13px;color:var(--brand-900);font-weight:700;">${item.site}</h4>
+              <p style="margin:0 0 10px;font-size:11px;color:#475569;line-height:1.45;">${item.remediation}</p>
+              <div style="font-size:10px;color:var(--muted);margin-bottom:12px;">
+                <span>👤 PIC: <b>${item.assessor || item.auditor || 'PIC Auditor'}</b></span> · 
+                <span>📅 ${item.assessmentDate || '2026'}</span>
+                ${item.no > 0 ? ` · <b style="color:#dc2626;">${item.no} Ketidaksesuaian</b>` : ''}
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button type="button" class="btn secondary sm" style="flex:1;font-size:11px;padding:6px;" onclick="showPage('${item.moduleKey || 'ppa'}')">
+                ✏️ Buka Form Inspeksi
+              </button>
+              <button type="button" class="btn primary sm" style="flex:1;font-size:11px;padding:6px;" onclick="window.ProperApp.exportAssessmentToPDF(${JSON.stringify(item).replace(/"/g, '&quot;')})">
+                📄 Ekspor PDF Resmi
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+}
+
 async function loadExecutiveAnalyticsV2(force=false){
   ensureExecutiveDashboard();
   const keys=Object.keys(moduleMeta), results=await Promise.all(keys.map(k=>fetchModule(k,force))), map={};
   keys.forEach((k,i)=>{map[k]=results[i];executiveCache[k]=results[i];renderModuleAnalytics(k,results[i]);});
+
+  // Ensure rich baseline data across Business Units if external API returned empty
+  ensureBaselineComplianceData(map);
+
   Object.entries(map).forEach(([key,rows])=>(rows||[]).forEach(r=>r._module=key));
   executiveRawMap=map; buildExecutiveFilterOptions(map);
   renderExecutive(map); renderDashboardV2(map);
+  renderRiskHeatmap(map);
   if(window.ProperMapEngine && typeof window.ProperMapEngine.refreshMLAndMap === 'function'){
     window.ProperMapEngine.refreshMLAndMap(map);
   }
@@ -9916,7 +10489,7 @@ async function loadExecutiveAnalyticsV2(force=false){
 const _oldLoadExecutiveAnalytics=loadExecutiveAnalytics;
 loadExecutiveAnalytics=function(force=false){return loadExecutiveAnalyticsV2(force)};
 setDashDate();
-setTimeout(()=>loadExecutiveAnalyticsV2(false),1200);
+setTimeout(()=>loadExecutiveAnalyticsV2(false),800);
 
 (function initRealHero(){
   const root=document.getElementById('heroPhotoSlides');if(!root)return;
